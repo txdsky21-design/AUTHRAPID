@@ -24,55 +24,75 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // ===============================
-// UI HELPERS
+// NOTIFICATION
 // ===============================
 function showNotification(message, type = "info") {
-  const existing = document.querySelector(".notification");
-  if (existing) existing.remove();
+  const old = document.querySelector(".notification");
+  if (old) old.remove();
 
-  const notification = document.createElement("div");
-  notification.textContent = message;
-  notification.style.cssText = `
+  const n = document.createElement("div");
+  n.className = "notification";
+  n.textContent = message;
+  n.style.cssText = `
     position: fixed;
     top: 100px;
     right: 20px;
     background: ${type === "error" ? "#EF4444" : type === "success" ? "#10B981" : "#2563EB"};
-    color: white;
+    color: #fff;
     padding: 1rem 1.5rem;
     border-radius: 8px;
-    z-index: 10000;
-    font-weight: 500;
+    z-index: 9999;
   `;
-
-  document.body.appendChild(notification);
-
-  setTimeout(() => notification.remove(), 3000);
+  document.body.appendChild(n);
+  setTimeout(() => n.remove(), 3000);
 }
 
 // ===============================
-// SMOOTH SCROLL
+// LOGIN
 // ===============================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener("click", e => {
+const loginForm = document.getElementById("loginForm");
+if (loginForm) {
+  loginForm.addEventListener("submit", async e => {
     e.preventDefault();
-    document.querySelector(anchor.getAttribute("href"))?.scrollIntoView({ behavior: "smooth" });
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.href = "dashboard.html";
+    } catch {
+      showNotification("Invalid email or password", "error");
+    }
   });
-});
+}
 
 // ===============================
-// MOBILE MENU
-// ===============================
-const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-
-mobileMenuToggle?.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  mobileMenuToggle.classList.toggle("active");
-});
-
-// ===============================
-// 🔐 REGISTER (Firebase)
+// REGISTER
 // ===============================
 const registerForm = document.getElementById("registerForm");
 if (registerForm) {
-  registerForm.addEventListener("subm
+  registerForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirm = document.getElementById("confirmPassword").value;
+
+    if (password !== confirm) {
+      showNotification("Passwords do not match", "error");
+      return;
+    }
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      showNotification(err.message, "error");
+    }
+  });
+}
+
+// ===============================
+// AUTH PROTECTION (DASHBOARD)
+// ===============================
+onAuthStateChanged(auth, user => {
+  if (window.location.pathname.includes("dashboard.html")) {
