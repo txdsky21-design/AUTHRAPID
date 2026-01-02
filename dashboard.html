@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - RapidAuth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="32" height="32" rx="8" fill="#DC2626"/>
+                        <path d="M16 8L20 14H12L16 8Z" fill="white"/>
+                        <path d="M10 18L14 24H6L10 18Z" fill="white"/>
+                        <path d="M22 18L26 24H18L22 18Z" fill="white"/>
+                    </svg>
+                    <span class="logo-text">RapidAuth</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="#apps">Applications</a></li>
+                    <li><a href="#users">Users</a></li>
+                    <li><a href="#settings">Settings</a></li>
+                    <li><a href="login.html" class="nav-link-btn">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <div class="container">
+                <h1 class="dashboard-title">Dashboard</h1>
+                <p class="dashboard-subtitle">Manage your applications and users</p>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="container">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-title">Total Users</div>
+                        <div class="stat-card-value">12,458</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-title">Active Licenses</div>
+                        <div class="stat-card-value">8,234</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-title">Applications</div>
+                        <div class="stat-card-value">24</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-title">Revenue (Monthly)</div>
+                        <div class="stat-card-value">$45,230</div>
+                    </div>
+                </div>
+
+                <!-- Recent Users -->
+                <div class="dashboard-card">
+                    <h2 class="dashboard-card-title">Recent Users</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>License Key</th>
+                                <th>Status</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>john_doe</td>
+                                <td>john@example.com</td>
+                                <td>RA-XXXX-XXXX-XXXX</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>2024-01-15</td>
+                            </tr>
+                            <tr>
+                                <td>jane_smith</td>
+                                <td>jane@example.com</td>
+                                <td>RA-XXXX-XXXX-XXXX</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>2024-01-14</td>
+                            </tr>
+                            <tr>
+                                <td>mike_wilson</td>
+                                <td>mike@example.com</td>
+                                <td>RA-XXXX-XXXX-XXXX</td>
+                                <td><span class="badge badge-warning">Expired</span></td>
+                                <td>2024-01-13</td>
+                            </tr>
+                            <tr>
+                                <td>sarah_jones</td>
+                                <td>sarah@example.com</td>
+                                <td>RA-XXXX-XXXX-XXXX</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>2024-01-12</td>
+                            </tr>
+                            <tr>
+                                <td>david_brown</td>
+                                <td>david@example.com</td>
+                                <td>RA-XXXX-XXXX-XXXX</td>
+                                <td><span class="badge badge-error">Banned</span></td>
+                                <td>2024-01-11</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Applications -->
+                <div class="dashboard-card">
+                    <h2 class="dashboard-card-title">Your Applications</h2>
+                    <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <h3 class="feature-title">My App 1</h3>
+                            <p class="feature-description">5,234 users • 3,891 active</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <h3 class="feature-title">My App 2</h3>
+                            <p class="feature-description">3,456 users • 2,123 active</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <h3 class="feature-title">My App 3</h3>
+                            <p class="feature-description">1,789 users • 1,234 active</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
