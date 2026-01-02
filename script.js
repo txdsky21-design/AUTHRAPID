@@ -14,10 +14,10 @@ import {
 // 🔥 FIREBASE CONFIG (REPLACE)
 // ===============================
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyD6nF82dGhtRggT0mrZoNW4-_CEebQ1DzM",
+  authDomain: "rapid-auth-79b8c.firebaseapp.com",
+  projectId: "rapid-auth-79b8c",
+  appId: "1:679037963534:web:5312b36cc5538a90bbdb5f"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -96,3 +96,4 @@ if (registerForm) {
 // ===============================
 onAuthStateChanged(auth, user => {
   if (window.location.pathname.includes("dashboard.html")) {
+
